@@ -20,3 +20,15 @@ A Machine Learning tool that detects malicious URLs based on text patterns. Unli
 
 ### Future Improvements
 * Connect to the **Google Safe Browsing API** for verification.
+
+
+### Data Analysis
+I utilized the **Malicious URLs Dataset** from Kaggle, which contains ~15,000 entries.
+
+**Preprocessing Strategy:**
+The original dataset contained four classes: `benign`, `defacement`, `phishing`, and `malware`. To create a robust defensive tool, I engineered a new binary feature:
+* **Safe:** mapped from `benign`
+* **Malicious:** mapped from `defacement`, `phishing`, and `malware`
+
+**Why Random Forest?**
+I chose Random Forest over Naive Bayes because URL structures often have complex, non-linear dependencies (e.g., a safe domain like `google.com` can become malicious if followed by a specific query string `?login=failed`).
